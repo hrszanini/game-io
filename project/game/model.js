@@ -9,11 +9,12 @@ class Control{
     }
 }
 
-function newPlayer(name, velocity){
+function newPlayer(name, velocity, color){
     let player = new GameObject();
 
     player.name = name;
     player.velocity = velocity;
+    player.color = color;
 
     player.control = new Control();
 

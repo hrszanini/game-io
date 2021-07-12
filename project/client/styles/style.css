@@ -5,11 +5,31 @@
 
 body {
     background-color: antiquewhite;
+    padding: 10%;
 }
 
 #screen {
-    height: 450px;
+    height: 300px;
     width: 600px;
-    z-index: 0;
+
+    display: block;
+    margin: auto;
+
     background-color: burlywood;
+}
+
+.line {
+    width: 600px;
+    min-height: 10%;
+    margin: auto;
+    padding: 5px;
+    justify-content: center;
+    display: block;
+    align-items: center;
+}
+
+.button {
+    display: inline-block;
+    min-width: 49%;
+    min-height: 10%;
 }

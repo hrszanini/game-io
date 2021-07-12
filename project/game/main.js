@@ -4,9 +4,9 @@ const { newPlayer } = require('./model');
 const gameInstance = new Game(60);
 gameInstance.start();
 
-function instantiatePlayer(name){
-    const player = newPlayer(name, 10);
-    gameInstance.addGameObject(player);
+function instantiatePlayer(player){
+    const playerInstance = newPlayer(player.name, player.velocity, player.color);
+    gameInstance.addGameObject(playerInstance);
 }
 
 function commandPlayer(name, command){
@@ -21,7 +21,10 @@ function getPlayers(){
     let players = {};
     for(let pos in gameInstance.gameObjects){
         const player = gameInstance.gameObjects[pos];
-        players[player.name] = player.position;
+        players[player.name] = {
+            position: player.position,
+            color: player.color
+        }
     }
     return players;
 }

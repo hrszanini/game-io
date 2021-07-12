@@ -2,7 +2,7 @@ const port = 9000;
 
 console.log('Step 1');
 //Import game functions
-const  {instantiatePlayer, commandPlayer, getPlayers} = require('./game/main');
+const {instantiatePlayer, commandPlayer, getPlayers} = require('./game/main');
 
 console.log('Step 2');
 //Criar servidor de API
@@ -19,9 +19,10 @@ var io = require('socket.io')(http);
 
 io.on("connection", function(socket){
     socket.on("Create user", function(msg){
-        if(msg.player != null)
-            instantiatePlayer(msg.player);
-            console.log(`Created player: ${msg.player}`);
+        if(msg.name != null){
+            console.log(msg);
+            instantiatePlayer(msg);
+        }
     });
     socket.on("Command", function(msg){
         commandPlayer(msg.player, msg.command);

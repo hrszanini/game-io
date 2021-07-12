@@ -7,6 +7,20 @@
     </head>
     <body onkeydown="command(event);">
         <canvas id="screen"></canvas>
+
+        <div class="line">
+            <input class="button" type="button" onclick="command({keyCode: 38})" value="UP">
+        </div>
+
+        <div class="line">
+            <input class="button" type="button" onclick="command({keyCode: 37})" value="LEFT">
+            <input class="button" type="button" onclick="command({keyCode: 39})" value="RIGHT">
+        </div>
+
+        <div class="line">
+            <input class="button" type="button" onclick="command({keyCode: 40})" value="DOWN">
+        </div>
+        
     </body>
     <script src="/script/script"></script>
 </html>
