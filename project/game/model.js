@@ -23,13 +23,13 @@ function newPlayer(name, velocity, color){
     }
 
     player.onUpdate = () => {
-        if(player.control.UP)
+        if(player.control.UP && player.position.x < 150)
             player.position.x += player.velocity;
-        if(player.control.DOWN)
+        if(player.control.DOWN && player.position.x > 0)
             player.position.x -= player.velocity;
-        if(player.control.RIGHT)
+        if(player.control.RIGHT && player.position.y < 300)
             player.position.y += player.velocity;
-        if(player.control.LEFT)
+        if(player.control.LEFT && player.position.y > 0)
             player.position.y -= player.velocity;
         player.control = new Control();
     }

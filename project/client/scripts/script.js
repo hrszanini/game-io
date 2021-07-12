@@ -42,6 +42,12 @@ function uncommand(e){
   delete commands[control[e.keyCode]];
 }
 
+function resetCommand(){
+  commands = {};
+}
+
+document.getElementById("body").addEventListener("focusout", resetCommand);
+
 function render(objects){
   ctx.clearRect(0, 0, 300, 500);
   for(let pos in objects){
@@ -50,7 +56,7 @@ function render(objects){
     ctx.fillRect(playerRender.position.y, playerRender.position.x, 10, 10);
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(pos, playerRender.position.y, playerRender.position.x - 5);
+    ctx.fillText(pos, playerRender.position.y, playerRender.position.x + 20);
   }
 }
 
@@ -59,7 +65,7 @@ setInterval( () => {
     socket.emit("Command", {'player': player.name,'command': pos});
     console.log(pos);
   }
-}, 1000/60);
+}, 1000/100);
   
 socket.on("Render", function(msg){ 
   render(msg);
