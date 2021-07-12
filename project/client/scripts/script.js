@@ -53,10 +53,10 @@ function render(objects){
   for(let pos in objects){
     playerRender = objects[pos];
     ctx.fillStyle = playerRender.color;
-    ctx.fillRect(playerRender.position.y, playerRender.position.x, 10, 10);
+    ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(pos, playerRender.position.y, playerRender.position.x + 20);
+    ctx.fillText(pos, playerRender.position.y + 10, playerRender.position.x + 30);
   }
 }
 

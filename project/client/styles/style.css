@@ -5,11 +5,14 @@
 
 body {
     background-color: antiquewhite;
-    padding: 10%;
+    padding: 5%;
 }
 
 #screen {
     display: block;
+
+    width: auto;
+    height: 60%;
 
     margin-left: auto;
     margin-right: auto;
@@ -30,7 +33,7 @@ body {
     display: inline-block;
 
     width: 32%;
-    height: 50px;
+    height: 75px;
 
     border-radius: 5px;
     border-style: solid;
