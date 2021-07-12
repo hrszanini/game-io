@@ -1,0 +1,15 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+#screen {
+    height: 450px;
+    width: 600px;
+    z-index: 0;
+    background-color: burlywood;
+}
