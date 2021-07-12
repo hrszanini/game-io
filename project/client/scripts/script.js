@@ -7,6 +7,8 @@ var control = {
 }
 var commands = {};
 
+var old ={};
+
 //Initialize Player
 var player = { velocity: 2 } 
 player.name = prompt("Insira seu nome");
@@ -50,6 +52,12 @@ document.getElementById("body").addEventListener("onfocusout", resetCommand);
 
 function render(objects){
   ctx.clearRect(0, 0, 600, 300);
+  for(let pos in old){
+    playerRender = objects[pos];
+    ctx.fillStyle = playerRender.color;
+    ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
+  }
+  
   for(let pos in objects){
     playerRender = objects[pos];
     ctx.fillStyle = playerRender.color;
@@ -60,6 +68,8 @@ function render(objects){
     ctx.textAlign = "center";
     ctx.fillText(pos, playerRender.position.y + 10, playerRender.position.x + 30);
   }
+
+  old = objects;
 }
 
 setInterval( () => {
