@@ -1,8 +1,11 @@
 const { Game } = require('./engine/game');
-const { newPlayer } = require('./model');
+const { newPlayer, newScore } = require('./model');
 
 const gameInstance = new Game(60);
 gameInstance.start();
+
+const scoreInstance = newScore(50, 50);
+gameInstance.addGameObject(scoreInstance);
 
 function instantiatePlayer(player){
     const playerInstance = newPlayer(player.name.toUpperCase(), player.velocity, player.color);

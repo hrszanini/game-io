@@ -44,9 +44,13 @@ class Size {
 
 class GameObject {
     constructor(){
+        //Parameters
         this.position = new Position(0, 0, 0);
-        this.size = new Size(10, 10, 10);
-        this.collider2d = new Collider2D(new Position(0, 0, 0), new Size(10, 10, 10));
+        this.size = new Size(0, 0, 0);
+        this.collider2d = new Collider2D(new Position(0, 0, 0), new Size(0, 0, 0));
+
+        //Mehthods
+        this.onCollision2D = undefined;
     }
 
     onStart(){}
