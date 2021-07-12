@@ -37,10 +37,3 @@ body {
 
     margin: 2px;
 }
-
-.escondido {
-    display: inline-block;
-    width: 32%;
-    visibility: hidden;
-    margin: 2px;
-}
