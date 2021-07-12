@@ -9,27 +9,38 @@ body {
 }
 
 #screen {
-    height: 300px;
-    width: 600px;
-
     display: block;
-    margin: auto;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 
     background-color: burlywood;
 }
 
 .line {
-    width: 600px;
-    min-height: 10%;
-    margin: auto;
-    padding: 5px;
-    justify-content: center;
     display: block;
-    align-items: center;
+
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .button {
     display: inline-block;
-    min-width: 49%;
-    min-height: 10%;
+
+    width: 32%;
+    height: 50px;
+
+    border-radius: 5px;
+    border-style: solid;
+
+    margin: 2px;
+}
+
+.escondido {
+    display: inline-block;
+    width: 32%;
+    visibility: hidden;
+    margin: 2px;
 }

@@ -46,10 +46,10 @@ function resetCommand(){
   commands = {};
 }
 
-document.getElementById("body").addEventListener("focusout", resetCommand);
+document.getElementById("body").addEventListener("onfocusout", resetCommand);
 
 function render(objects){
-  ctx.clearRect(0, 0, 300, 500);
+  ctx.clearRect(0, 0, 600, 300);
   for(let pos in objects){
     playerRender = objects[pos];
     ctx.fillStyle = playerRender.color;
