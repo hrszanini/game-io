@@ -7,8 +7,6 @@ var control = {
 }
 var commands = {};
 
-var old ={};
-
 //Initialize Player
 var player = { velocity: 2 } 
 player.name = prompt("Insira seu nome");
@@ -52,30 +50,26 @@ document.getElementById("body").addEventListener("onfocusout", resetCommand);
 
 function render(objects){
   ctx.clearRect(0, 0, 600, 300);
-  for(let pos in old){
-    playerRender = objects[pos];
-    ctx.fillStyle = playerRender.color;
-    ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
-  }
-  
   for(let pos in objects){
     playerRender = objects[pos];
     ctx.fillStyle = playerRender.color;
-    ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
+
+    ctx.beginPath();
+    ctx.arc(playerRender.position.y, playerRender.position.x, 10, 0, 2 * Math.PI);
+    ctx.fill();
+
+    //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
     
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(pos, playerRender.position.y + 10, playerRender.position.x + 30);
+    ctx.fillText(pos, playerRender.position.y, playerRender.position.x + 20);
   }
-
-  old = objects;
 }
 
 setInterval( () => {
   for(pos in commands){
     socket.emit("Command", {'player': player.name,'command': pos});
-    console.log(pos);
   }
 }, 1000/100);
   
