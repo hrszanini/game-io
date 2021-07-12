@@ -5,9 +5,10 @@ var control = {
   39: "RIGHT",
   38: "DOWN"
 }
+var commands = {};
 
 //Initialize Player
-var player = { velocity: 10 } 
+var player = { velocity: 2 } 
 player.name = prompt("Insira seu nome");
 player.color = prompt("Insira um cor ( Vermelho, Verde, Azul, Preto )");
 
@@ -32,9 +33,13 @@ var canvas = document.getElementById("screen");
 var ctx = canvas.getContext("2d");
 
 function command(e){
-    if(e.keyCode >= 37 && e.keyCode <= 40){
-        socket.emit("Command", {'player': player.name, 'command': control[e.keyCode]});
-    }
+  if(e.keyCode >= 37 && e.keyCode <= 40)
+  commands[control[e.keyCode]] = true;
+}
+
+function uncommand(e){
+  if(e.keyCode >= 37 && e.keyCode <= 40)
+  delete commands[control[e.keyCode]];
 }
 
 function render(objects){
@@ -49,6 +54,13 @@ function render(objects){
   }
 }
 
+setInterval( () => {
+  for(pos in commands){
+    socket.emit("Command", {'player': player.name,'command': pos});
+    console.log(pos);
+  }
+}, 1000/60);
+  
 socket.on("Render", function(msg){ 
   render(msg);
 });
