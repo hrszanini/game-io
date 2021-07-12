@@ -9,7 +9,7 @@ var commands = {};
 
 //Initialize Player
 var player = { velocity: 2 } 
-player.name = prompt("Insira seu nome");
+player.name = prompt("Insira seu nome").toUpperCase();
 player.color = prompt("Insira um cor ( Vermelho, Verde, Azul, Preto )");
 
 switch(player.color.toUpperCase()){
