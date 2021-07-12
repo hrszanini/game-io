@@ -5,7 +5,7 @@ const gameInstance = new Game(60);
 gameInstance.start();
 
 function instantiatePlayer(player){
-    const playerInstance = newPlayer(player.name, player.velocity, player.color);
+    const playerInstance = newPlayer(player.name.toUpperCase(), player.velocity, player.color);
     gameInstance.addGameObject(playerInstance);
 }
 
