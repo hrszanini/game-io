@@ -19,6 +19,9 @@ body {
     margin-bottom: 10px;
 
     background-color: burlywood;
+
+    border-radius: 5px;
+    border-style: solid;
 }
 
 .line {
