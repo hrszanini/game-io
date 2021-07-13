@@ -64,10 +64,13 @@ function render(objects){
     ctx.fill();
 
     //Player name
+    let text = pos;
+    if(playerRender.score !== undefined)
+      test += ` ${playerRender.score}`;
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(`${pos} ${player.score}`, playerRender.position.y, playerRender.position.x + 20);
+    ctx.fillText(text, playerRender.position.y, playerRender.position.x + 20);
   }
 }
 
