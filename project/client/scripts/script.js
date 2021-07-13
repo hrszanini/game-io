@@ -49,21 +49,25 @@ function resetCommand(){
 document.getElementById("body").addEventListener("onfocusout", resetCommand);
 
 function render(objects){
+  //Reset screen
   ctx.clearRect(0, 0, 600, 300);
+
   for(let pos in objects){
     playerRender = objects[pos];
-    ctx.fillStyle = playerRender.color;
 
+    //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
+
+    //Player draw
+    ctx.fillStyle = playerRender.color;
     ctx.beginPath();
     ctx.arc(playerRender.position.y, playerRender.position.x, 10, 0, 2 * Math.PI);
     ctx.fill();
 
-    //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
-    
+    //Player name
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(pos, playerRender.position.y, playerRender.position.x + 20);
+    ctx.fillText(`${pos} ${player.score}`, playerRender.position.y, playerRender.position.x + 20);
   }
 }
 

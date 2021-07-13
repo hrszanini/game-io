@@ -26,7 +26,8 @@ function getPlayers(){
         const player = gameInstance.gameObjects[pos];
         players[player.name] = {
             position: player.position,
-            color: player.color
+            color: player.color,
+            score: player.score
         }
     }
     return players;

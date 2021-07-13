@@ -49,6 +49,10 @@ function newScore(x, y){
     score.color = "rgb(255, 255, 255)";
 
     score.onCollision2D = (collisions) => {
+        for(let pos in collisions){
+            collisions[pos].score += 1;
+        }
+
         min = Math.ceil(0);
         max = Math.floor(300);
         let newX = Math.floor(Math.random() * 250);
