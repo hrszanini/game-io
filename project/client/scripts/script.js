@@ -66,7 +66,8 @@ function render(objects){
     //Player name
     let text = pos;
     if(playerRender.score !== undefined)
-      test += ` ${playerRender.score}`;
+      text += ` ${playerRender.score}`;
+      
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
