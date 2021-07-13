@@ -24,8 +24,14 @@ io.on("connection", function(socket){
             instantiatePlayer(msg);
         }
     });
+
     socket.on("Command", function(msg){
         commandPlayer(msg.player, msg.command);
+    });
+
+    socket.on("Chat", function(msg){
+        console.log(msg);
+        io.emit("Chat", `${msg.name}: ${msg.message}`);
     });
 });
 

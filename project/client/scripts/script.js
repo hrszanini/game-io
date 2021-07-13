@@ -34,6 +34,9 @@ var ctx = canvas.getContext("2d");
 function command(e){
   if(e.keyCode >= 37 && e.keyCode <= 40)
   commands[control[e.keyCode]] = true;
+
+  if(e.key == 'Enter')
+  sendChat();
 }
 
 function uncommand(e){
@@ -45,11 +48,17 @@ function resetCommand(){
   commands = {};
 }
 
+function sendChat(){
+  let sendText = document.getElementById("sendtext");
+  socket.emit("Chat", {'name': player.name, 'message': sendText.value});
+  sendText.value = "";
+}
+
 document.getElementById("body").addEventListener("onfocusout", resetCommand);
 
 function render(objects){
   //Reset screen
-  ctx.clearRect(0, 0, 600, 300);
+  ctx.clearRect(0, 0, 1200, 600);
   players = objects.players;
 
   for(let pos in players){
@@ -79,7 +88,7 @@ function render(objects){
   }
 
   ctx.fillStyle = color.CINZA;
-  ctx.fillRect(0, 0, 600, 15);
+  ctx.fillRect(0, 0, 1200, 15);
 
   let leadderText = `HIGHSCORE: ${objects.leadder.name} - ${objects.leadder.score}`;
   ctx.fillStyle = color.PRETO;
@@ -96,4 +105,10 @@ setInterval( () => {
   
 socket.on("Render", function(msg){ 
   render(msg);
+});
+
+socket.on("Chat", function(msg){ 
+  let chatText = document.getElementById("chattext");
+  chatText.scrollTop = chatText.scrollHeight;
+  chatText.value += `${msg}\n`;
 });

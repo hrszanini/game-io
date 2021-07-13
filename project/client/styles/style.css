@@ -1,45 +1,114 @@
 * {
     margin: 0px;
     padding: 0px;
-}
-
-body {
     background-color: antiquewhite;
-    padding: 5%;
+
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */    
 }
 
-#screen {
-    display: block;
+.row-of-icons {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */      
+}
 
-    width: auto;
-    height: 60%;
+.container-grid {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
 
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+    justify-items: center;
+    align-items: center;
 
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-gap: 10px;
+    grid-template-areas:"header" "main" "footer";
+}
+
+header {
+    grid-area: header;
+    background-color: white;
+}
+
+footer {
+    grid-area: footer;
+    background-color: black;
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}
+
+
+main > canvas {
     background-color: burlywood;
-
+    max-width: 90vw;
     border-radius: 5px;
     border-style: solid;
 }
 
-.line {
-    display: block;
+/* Chat */
+main > .chat {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 4fr 1fr;
+    grid-template-areas:"textarea textarea" "sendline button";
 
-    width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-items: center;
 }
 
-.button {
-    display: inline-block;
+.chat.textarea {
+    grid-area: textarea;
+    resize: none;
+    width: 100%;
+    border-style: none;
+    background-color: wheat;
+}
 
-    width: 32%;
-    height: 75px;
+.chat.sendline {
+    grid-area: sendline;
+    width: max-content;
+    width: 100%;
+    border-style: none;
+    background-color: whitesmoke;
+}
 
-    border-radius: 5px;
-    border-style: solid;
+.chat.button {
+    grid-area: button;
+    width: 100%;
+    border-style: none;
+    background-color: lightgray;
+}
 
-    margin: 2px;
+.chat.button:hover{
+    background-color: white;
+}
+
+.chat.button:active{
+    background-color: gray;
+}
+
+/* Controle */
+.control {
+    display: none;
+}
+
+@media (max-width: 600px){
+/* Controle */
+    .control {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .control > .button {
+        background-color: white;
+        border-radius: 5px;
+    }
 }

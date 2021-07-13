@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./styles/style.css" rel="stylesheet">
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body id="body" onkeydown="command(event);" onkeyup="uncommand(event);">
+        <div class="container-grid">
+            <header>
+            </header>
+            <main>
+                <canvas id="screen" width="1200" height="600"></canvas>
+                <div class="control">
+                    <input class="button" type="button" onclick="commands={'LEFT': true, 'DOWN': true};" value="LUP">
+                    <input class="button" type="button" onclick="commands={'DOWN': true};" value="UP">
+                    <input class="button" type="button" onclick="commands={'RIGHT': true, 'DOWN': true};" value="RUP">
+                    <input class="button" type="button" onclick="commands={'LEFT': true};" value="LEFT">
+                    <input class="button" type="button" onclick="commands={};" value="STOP">
+                    <input class="button" type="button" onclick="commands={'RIGHT': true};" value="RIGHT">
+                    <input class="button" type="button" onclick="commands={'LEFT': true, 'UP': true};" value="LDOWN">
+                    <input class="button" type="button" onclick="commands={'UP': true};" value="DOWN">
+                    <input class="button" type="button" onclick="commands={'RIGHT': true, 'UP': true};" value="RDOWN">
+                </div>
+                <div class="chat">
+                    <textarea id="chattext" rows="5" wrap="true" class="chat textarea" disabled></textarea>
+                    <input id="sendtext" type="textbox" class="chat sendline">
+                    <input type="button" class="chat button" value="Enviar" onclick="sendChat();">
+                </div>
+            </main>
+            <footer></footer>
+        </div>
+    </body>
+    <script src="./scripts/script.js"></script>
+</html>
