@@ -29,8 +29,22 @@ io.on("connection", function(socket){
     });
 });
 
+const leadder = {name: "Mrs. Nobody", score: 0};
 setInterval(() => {
-    const msg = getPlayers();
+    const players = getPlayers();
+
+    for(let player in players){
+        if(players[player].score > leadder.score){
+            leadder.name = player;
+            leadder.score = players[player].score;
+        }
+    }
+
+    const msg = { 
+        'leadder': leadder,
+        'players': players
+    };
+
     io.emit("Render", msg);
 }, 1000/60);
 

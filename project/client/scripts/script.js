@@ -52,27 +52,37 @@ function render(objects){
   //Reset screen
   ctx.clearRect(0, 0, 600, 300);
 
-  for(let pos in objects){
-    playerRender = objects[pos];
+  players = objects.players;
+  for(let pos in players){
+    playerRender = players[pos];
 
     //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
 
     //Player draw
     ctx.fillStyle = playerRender.color;
     ctx.beginPath();
-    ctx.arc(playerRender.position.y, playerRender.position.x, 10, 0, 2 * Math.PI);
+    ctx.arc(playerRender.position.y, playerRender.position.x + 15, 10, 0, 2 * Math.PI);
     ctx.fill();
 
     //Player name
     let text = pos;
     if(playerRender.score !== undefined)
       text += ` ${playerRender.score}`;
-      
+
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(text, playerRender.position.y, playerRender.position.x + 20);
+    ctx.fillText(text, playerRender.position.y, playerRender.position.x + 20 + 15);
   }
+
+  ctx.fillStyle = "rgb(125, 125, 125)";
+  ctx.fillRect(0, 0, 600, 15);
+
+  let leadderText = `HIGHSCORE: ${objects.leadder.name} - ${objects.leadder.score}`;
+  ctx.fillStyle = "rgb(0, 0, 0)";
+  ctx.font = "10px Arial";
+  ctx.textAlign = "left";
+  ctx.fillText(leadderText, 10, 10);
 }
 
 setInterval( () => {
