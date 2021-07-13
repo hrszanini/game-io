@@ -4,28 +4,27 @@ var control = {
   40: "UP",
   39: "RIGHT",
   38: "DOWN"
-}
+};
+
+var color = {
+  VERMELHO: "rgb(255, 0, 0)",
+  VERDE: "rgb(0, 255, 0)",
+  AZUL: "rgb(0, 0, 255)",
+  PRETO: "rgb(0, 0, 0)",
+  BRANCO: "rgb(255, 255, 255)",
+  CINZA: "rgb(125, 125, 125)"
+};
+
 var commands = {};
 
 //Initialize Player
 var player = { velocity: 2 } 
 player.name = prompt("Insira seu nome").toUpperCase();
-player.color = prompt("Insira um cor ( Vermelho, Verde, Azul, Preto )");
+player.color = prompt("Insira um cor ( Vermelho, Verde, Azul, Preto )").toUpperCase();
+player.color = color[player.color];
 
-switch(player.color.toUpperCase()){
-  case "VERMELHO":
-    player.color = "rgb(255,0,0)";
-    break;
-  case "VERDE":
-    player.color = "rgb(0,255,0)";
-    break;
-  case "AZUL":
-    player.color = "rgb(0,0,255)";
-    break;
-  case "PRETO":
-  default:
-    player.color = "rgb(0,0,0)";
-}
+if(player.color === undefined)
+  player.color = color.PRETO;
 
 socket.emit("Create user", player);
 
@@ -51,14 +50,15 @@ document.getElementById("body").addEventListener("onfocusout", resetCommand);
 function render(objects){
   //Reset screen
   ctx.clearRect(0, 0, 600, 300);
-
   players = objects.players;
+
   for(let pos in players){
     playerRender = players[pos];
 
     //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
 
     //Player draw
+    ctx.globalAlpha = 0.75;
     ctx.fillStyle = playerRender.color;
     ctx.beginPath();
     ctx.arc(playerRender.position.y, playerRender.position.x + 15, 10, 0, 2 * Math.PI);
@@ -69,17 +69,18 @@ function render(objects){
     if(playerRender.score !== undefined)
       text += ` ${playerRender.score}`;
 
-    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = color.PRETO;
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
     ctx.fillText(text, playerRender.position.y, playerRender.position.x + 20 + 15);
   }
 
-  ctx.fillStyle = "rgb(125, 125, 125)";
+  ctx.fillStyle = color.CINZA;
   ctx.fillRect(0, 0, 600, 15);
 
   let leadderText = `HIGHSCORE: ${objects.leadder.name} - ${objects.leadder.score}`;
-  ctx.fillStyle = "rgb(0, 0, 0)";
+  ctx.fillStyle = color.PRETO;
   ctx.font = "10px Arial";
   ctx.textAlign = "left";
   ctx.fillText(leadderText, 10, 10);
