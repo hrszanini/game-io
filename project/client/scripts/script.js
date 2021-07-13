@@ -58,12 +58,14 @@ function render(objects){
     //ctx.fillRect(playerRender.position.y, playerRender.position.x, 20, 20);
 
     //Player draw
-    ctx.globalAlpha = 0.75;
-    ctx.fillStyle = playerRender.color;
-    ctx.beginPath();
-    ctx.arc(playerRender.position.y, playerRender.position.x + 15, 10, 0, 2 * Math.PI);
-    ctx.fill();
-
+    for(let i=1; i<=15; i++){
+      ctx.globalAlpha = (1/15) * (15 - i);
+      ctx.fillStyle = playerRender.color;
+      ctx.beginPath();
+      ctx.arc(playerRender.position.y, playerRender.position.x + 15, i, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+    
     //Player name
     let text = pos;
     if(playerRender.score !== undefined)
@@ -73,7 +75,7 @@ function render(objects){
     ctx.fillStyle = color.PRETO;
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(text, playerRender.position.y, playerRender.position.x + 20 + 15);
+    ctx.fillText(text, playerRender.position.y, playerRender.position.x + 22 + 15);
   }
 
   ctx.fillStyle = color.CINZA;
