@@ -5,12 +5,12 @@
         <link href="./styles/style.css" rel="stylesheet">
         <script src="/socket.io/socket.io.js"></script>
     </head>
-    <body id="body" onkeydown="command(event);" onkeyup="uncommand(event);">
+    <body id="body">
         <div class="container-grid">
             <header>
             </header>
             <main>
-                <canvas id="screen" width="1200" height="600"></canvas>
+                <canvas id="screen" width="1200" height="615"></canvas>
                 <div class="control">
                     <input class="button" type="button" onclick="commands={'LEFT': true, 'DOWN': true};" value="LUP">
                     <input class="button" type="button" onclick="commands={'DOWN': true};" value="UP">
@@ -31,5 +31,7 @@
             <footer></footer>
         </div>
     </body>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/control.js"></script>
+    <script src="./scripts/render.js"></script>
+    <script src="./scripts/connection.js"></script>
 </html>
