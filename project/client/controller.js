@@ -21,6 +21,14 @@ function configure(app){
     app.get('/styles/:style', function(req, res) {
         res.sendFile(`${__dirname}/styles/${req.params.style}`);
     });
+
+    app.get('/images/:image', function(req, res) {
+        res.sendFile(`${__dirname}/images/${req.params.image}`);
+    });
+
+    app.get('/fonts/:font', function(req, res) {
+        res.sendFile(`${__dirname}/fonts/${req.params.font}`);
+    });
 }
  
 module.exports = { configure };
