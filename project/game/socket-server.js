@@ -7,7 +7,8 @@ const Channel = {
     CHAT: "chat",
     CREATE_USER: "create_user",
     FRAME: "frame",
-    COMMAND: "command"
+    COMMAND: "command",
+    PING: "ping"
 }
 
 function configure(http){
@@ -54,6 +55,8 @@ function configure(http){
     
         io.emit(Channel.FRAME, msg);
     });
+
+    setInterval(io.emit,1000, Channel.PING, Date.now());
 }
 
 module.exports = { configure };

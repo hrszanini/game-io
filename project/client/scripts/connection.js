@@ -5,7 +5,8 @@ const Channel = {
   CHAT: "chat",
   CREATE_USER: "create_user",
   FRAME: "frame",
-  COMMAND: "command"
+  COMMAND: "command",
+  PING: "ping"
 }
 
 //Socket configuration
@@ -35,30 +36,6 @@ socket.on(Channel.CHAT, function(msg){
 
 var ping = 0;
 
-setInterval(()=> {
-  testPing((msg) => {ping = msg});
-}, 1000);
-
-function testPing(pong) {
-
-  var started = new Date().getTime();
-  var http = new XMLHttpRequest();
-
-  http.open("GET", `${window.location.protocol}//${window.location.host}/ping`,true);
-  http.onreadystatechange = function() {
-    if (http.readyState == 4) {
-      var ended = new Date().getTime();
-
-      var milliseconds = ended - started;
-
-      if (pong != null) {
-        pong(milliseconds);
-      }
-    }
-  };
-  try {
-    http.send(null);
-  } catch(exception) {
-    console.log(exception);
-  }
-}
+socket.on(Channel.PING, function(msg){ 
+  ping = Date.now - msg;
+});
