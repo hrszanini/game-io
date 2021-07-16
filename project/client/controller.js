@@ -7,6 +7,10 @@ function configure(app){
         req.params.page = 'index';
         next();
     }, getPage);
+
+    app.get('/ping', function(req, res) {
+        res.send("pong");
+    });
     
     app.get('/:page', getPage);
     
