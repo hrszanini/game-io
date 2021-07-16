@@ -21,6 +21,8 @@ class Player{
         player.collider.size = new Vector(20,20);
         player.tag = Tag.PLAYER;
 
+        //player.physics.mass = -0.05;
+
         player.physics.setLimit(new Vector(player.properties.maxAcceleration, player.properties.maxAcceleration));
         player.physics.drag = new Vector(0.5, 0.5);
 

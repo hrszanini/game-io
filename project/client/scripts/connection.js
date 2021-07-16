@@ -32,3 +32,33 @@ socket.on(Channel.CHAT, function(msg){
   chatText.scrollTop = chatText.scrollHeight;
   chatText.value += `${msg}\n`;
 });
+
+var ping = 0;
+
+setInterval(()=> {
+  testPing((msg) => {ping = msg});
+}, 1000);
+
+function testPing(pong) {
+
+  var started = new Date().getTime();
+  var http = new XMLHttpRequest();
+
+  http.open("GET", `${window.location.protocol}//${window.location.host}:${window.location.port}`,true);
+  http.onreadystatechange = function() {
+    if (http.readyState == 4) {
+      var ended = new Date().getTime();
+
+      var milliseconds = ended - started;
+
+      if (pong != null) {
+        pong(milliseconds);
+      }
+    }
+  };
+  try {
+    http.send(null);
+  } catch(exception) {
+    console.log(exception);
+  }
+}

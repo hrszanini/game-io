@@ -42,17 +42,21 @@ function drawObject(object){
     ctx.fillStyle = Color.PRETO;
     ctx.font = "10px Arial";
     ctx.textAlign = "center";
-    ctx.fillText(text, object.position.x,  object.position.y + 22 + 15);
+    ctx.fillText(text, object.position.x,  object.position.y + 22 + 20);
 }
 
 function drawHeader(leadder){
     ctx.fillStyle = Color.CINZA;
-    ctx.fillRect(0, 0, 1200, 15);
+    ctx.fillRect(0, 0, 1200, 25);
 
-    let leadderText = `HIGHSCORE: ${leadder.name} - ${leadder.score}`;
+    ctx.font = "20px Arial";
+    ctx.fillStyle = Color.BRANCO;
 
-    ctx.fillStyle = Color.PRETO;
-    ctx.font = "10px Arial";
     ctx.textAlign = "left";
-    ctx.fillText(leadderText, 10, 10);
+    let leadderText = `LEADDER: ${leadder.name} | HIGHSCORE:  ${leadder.score}`;
+    ctx.fillText(leadderText, 10, 20);
+
+    ctx.textAlign = "right";
+    let pingText = `${ping} ms`;
+    ctx.fillText(pingText, 1190, 20);
 }
