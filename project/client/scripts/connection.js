@@ -37,5 +37,5 @@ socket.on(Channel.CHAT, function(msg){
 var ping = 0;
 
 socket.on(Channel.PING, function(msg){ 
-  ping = Date.now - msg;
+  ping = Date.now() - msg;
 });

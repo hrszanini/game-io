@@ -35,6 +35,10 @@ function configure(http){
 
     });
 
+    setInterval(() => {
+        io.emit(Channel.PING, `${Date.now()}`);
+    }, 1000);
+
     const leadder = { name: "Mrs. Nobody", score: 0 };
 
     gameInstance.instantiateUpdateFunction(() => {
@@ -55,8 +59,6 @@ function configure(http){
     
         io.emit(Channel.FRAME, msg);
     });
-
-    setInterval(io.emit,1000, Channel.PING, Date.now());
 }
 
 module.exports = { configure };
