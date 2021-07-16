@@ -44,7 +44,7 @@ function testPing(pong) {
   var started = new Date().getTime();
   var http = new XMLHttpRequest();
 
-  http.open("GET", `${window.location.protocol}//${window.location.host}:${window.location.port}`,true);
+  http.open("GET", `${window.location.protocol}//${window.location.host}/`,true);
   http.onreadystatechange = function() {
     if (http.readyState == 4) {
       var ended = new Date().getTime();
