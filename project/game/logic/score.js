@@ -16,7 +16,8 @@ class Score{
         score.onCollision = (collisions) => {
             for(let pos in collisions){
                 const gameObject = collisions[pos];
-                if(gameObject.tag == Tag.PLAYER){
+                console.log(gameObject);
+                if(gameObject.tag == Tag.PLAYER || gameObject.tag == Tag.SCORE){
                     gameObject.properties.score += 1;
                     score.destroy();
                 }

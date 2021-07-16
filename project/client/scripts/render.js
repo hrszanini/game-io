@@ -32,6 +32,11 @@ function drawObject(object){
         ctx.fill();
     }
 
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = Color.PRETO;
+    ctx.rect(object.position.x -10, object.position.y+ 15 -10 , 20, 20);
+    ctx.stroke();
+
     let text;
     if(object.tag == "player")
         text = `${object.name} ${object.score}`;
