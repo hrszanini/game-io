@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "express": "^4.16.1",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.1.1",
+    "GameEngine": "git://github.com/hrszanini/GameEngineJS.git"
   },
   "author": "Hamilton Zanini",
   "license": "ISC"

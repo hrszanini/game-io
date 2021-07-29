@@ -1,8 +1,8 @@
 FROM node:12
 
-COPY project ./project
+COPY ./client ./src
 
-WORKDIR /project
+WORKDIR /src
 
 EXPOSE 9000
 

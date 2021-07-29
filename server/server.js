@@ -1,10 +1,7 @@
 //Criar servidor de API
-const port = 9000;
+const port = 9001;
 const server = require('express')();
 const http = require('http').Server(server);
-
-//Configurar controller do cliente
-require('./client/controller').configure(server);
 
 //Configurar controller do socket
 require("./game/socket-server").configure(http);

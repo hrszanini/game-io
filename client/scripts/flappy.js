@@ -147,6 +147,8 @@ function GameOver() {
 
 }
 
+var socket = io();
+
 function FlappyBird() {
     let pontos = 0
 
@@ -158,6 +160,8 @@ function FlappyBird() {
     const barreiras = new Barreiras(altura, largura, 200, 400,
         () => progresso.atualizarPontos(++pontos))
     const passaro = new Passaro(altura)
+
+    //setInterval(()=>{socket.emit("chat", altura)},100);
 
     areaDoJogo.appendChild(progresso.elemento)
     areaDoJogo.appendChild(passaro.elemento)
@@ -185,6 +189,12 @@ function FlappyBird() {
 }
 
 new FlappyBird().start()
+
+socket.on("chat", function(msg){ 
+    new Passaro(msg);
+  });
+
+
 // TESTE 4 - Barreiras, Passaro, Animacao e Progresso
 
 // const barreiras = new Barreiras(700, 1200, 300, 500)

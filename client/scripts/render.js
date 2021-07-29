@@ -34,8 +34,8 @@ function drawObject(object){
 
     ctx.globalAlpha = 1;
     ctx.fillStyle = Color.PRETO;
-    ctx.rect(object.position.x -10, object.position.y+ 15 -10 , 20, 20);
-    ctx.stroke();
+    //ctx.rect(object.position.x -10, object.position.y+ 15 -10 , 20, 20);
+    //ctx.stroke();
 
     let text;
     if(object.tag == "player")

@@ -1,15 +1,11 @@
-const { Vector } = require("./engine/component");
-const { Game } = require("./engine/game");
-const { Room } = require("./engine/room");
-const { Score } = require("./logic/score");
+const { Vector, Game, Room, GameObject } = require("GameEngine")
 const { Color } = require("./logic/color");
-const { Player } = require("./logic/player");
-const { GameObject } = require("./engine/gameObject");
+const { playerFactory, scoreFactory, renderObjectFactory } = require("./logic/factories");
 const { Tag } = require("./logic/tags");
 
 const HEIGHT = 600;
 const WIDTH = 1200;
-var scoreID = 0;
+
 const roomId = "Main";
 const roomInstance = new Room();
 const gameInstance = new Game();
@@ -26,8 +22,7 @@ setInterval(() => {
             scoreCount++;
     }
     if(scoreCount < 5){
-        let scoreInstance = new Score(Color.BRANCO);
-        scoreInstance.properties.name = scoreID++;
+        let scoreInstance = scoreFactory(Color.BRANCO);
         scoreInstance.position = new Vector(randomInt(0,WIDTH), randomInt(0,HEIGHT));
         roomInstance.addGameObject(scoreInstance);
     }
@@ -40,34 +35,26 @@ function instantiateUpdateFunction(callback){
 }
 
 function instantiatePlayer(name, color){
-    const playerInstance = new Player(name, Color[color]);
-    roomInstance.addGameObject(playerInstance);
+    const playerInstance = playerFactory(name, Color[color]);
+    roomInstance.addGameObject(playerInstance, name);
 }
 
 function commandPlayer(name, command){
-    for(let pos in roomInstance.gameObjects){
-        const gameObject = roomInstance.gameObjects[pos];
-        if(gameObject.properties.name == name){
-            gameObject.properties.control.addCommand(command);
-        }
-    }
+    const gameObject = roomInstance.gameObjects[name];
+    gameObject.properties.control.addCommand(command);
 }
 
 function getObjects(){
-    let objects = {};
+    let renderObjects = {};
+
     for(let pos in roomInstance.gameObjects){
         const object = roomInstance.gameObjects[pos];
-        if(object.tag != null){
-            objects[object.properties.name] = {
-                name: object.properties.name,
-                position: object.position,
-                color: object.properties.color,
-                score: object.properties.score,
-                tag: object.tag
-            }
-        }
+        
+        if(object.tag != null)
+            renderObjects[pos] = renderObjectFactory(object); 
     }
-    return objects;
+
+    return renderObjects;
 }
 
 function randomInt(min, max){
@@ -76,4 +63,4 @@ function randomInt(min, max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-module.exports = {instantiatePlayer, commandPlayer, getObjects, instantiateUpdateFunction};
+module.exports = { instantiatePlayer, commandPlayer, getObjects, instantiateUpdateFunction };

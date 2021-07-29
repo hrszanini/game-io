@@ -8,7 +8,7 @@ class Control{
             ACTION1: undefined,
             ACTION3: undefined,
             ACTION4: undefined,
-            ACTION5: undefined,
+            ACTION5: undefined
         }
 
         this.cachedCommands = [];
@@ -28,7 +28,6 @@ class Control{
             }
         };
     }
-
 }
 
 module.exports = { Control }

@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io("http://localhost:9001/");
 
 const Channel = {
   CONNECTION: "connection",
