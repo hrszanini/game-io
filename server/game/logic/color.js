@@ -7,4 +7,4 @@ var Color = {
     CINZA: "rgb(125, 125, 125)"
 }
 
-module.exports = { Color }
+module.exports = { Color };

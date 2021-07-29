@@ -2,10 +2,19 @@ version: '3.1'
 
 services:
   server:
-    container_name: io-server
+    container_name: gameio-server
     build:
       context: ./
-      dockerfile: Dockerfile
+      dockerfile: server.dockerfile
+    restart: always
+    ports:
+      - 9001:9001 
+
+  client:
+    container_name: gameio-client
+    build:
+      context: ./
+      dockerfile: client.dockerfile
     restart: always
     ports:
       - 9000:9000 
