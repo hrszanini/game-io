@@ -60,8 +60,4 @@ function drawHeader(leadder){
     ctx.textAlign = "left";
     let leadderText = `LEADDER: ${leadder.name} | HIGHSCORE:  ${leadder.score}`;
     ctx.fillText(leadderText, 10, 20);
-
-    ctx.textAlign = "right";
-    let pingText = `${ping} ms`;
-    ctx.fillText(pingText, 1190, 20);
 }
