@@ -1,4 +1,6 @@
-var socket = io("http://localhost:9001/");
+
+serverUrl = `http://${window.location.hostname}:9001`;
+var socket = io(serverUrl);
 
 const Channel = {
   CONNECTION: "connection",
