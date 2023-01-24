@@ -1,12 +1,13 @@
-var socket = io("http://localhost:9001/");
+
+serverUrl = `http://${window.location.hostname}:9001`;
+var socket = io(serverUrl);
 
 const Channel = {
   CONNECTION: "connection",
   CHAT: "chat",
   CREATE_USER: "create_user",
   FRAME: "frame",
-  COMMAND: "command",
-  PING: "ping"
+  COMMAND: "command"
 }
 
 //Socket configuration
@@ -32,10 +33,4 @@ socket.on(Channel.CHAT, function(msg){
   let chatText = document.getElementById("chattext");
   chatText.scrollTop = chatText.scrollHeight;
   chatText.value += `${msg}\n`;
-});
-
-var ping = 0;
-
-socket.on(Channel.PING, function(msg){ 
-  ping = Date.now() - msg;
 });

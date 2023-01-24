@@ -7,8 +7,7 @@ const Channel = {
     CHAT: "chat",
     CREATE_USER: "create_user",
     FRAME: "frame",
-    COMMAND: "command",
-    PING: "ping"
+    COMMAND: "command"
 }
 
 function configure(http){
@@ -34,10 +33,6 @@ function configure(http){
         });
 
     });
-
-    setInterval(() => {
-        io.emit(Channel.PING, `${Date.now()}`);
-    }, 1000);
 
     const leadder = { name: "Mrs. Nobody", score: 0 };
 
