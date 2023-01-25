@@ -17,4 +17,4 @@ services:
       dockerfile: client.dockerfile
     restart: always
     ports:
-      - 9000:9000 
+      - 80:80

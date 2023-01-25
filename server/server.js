@@ -1,5 +1,5 @@
 //Criar servidor de API
-const port = 9001;
+const port = 5000;
 const server = require('express')();
 const http = require('http').Server(server);
 

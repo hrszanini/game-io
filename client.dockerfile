@@ -1,11 +1,4 @@
-FROM node:12
+FROM nginx
 
-COPY ./client ./src
-
-WORKDIR /src
-
-EXPOSE 9000
-
-RUN npm install
-
-CMD [ "npm", "start" ]
+COPY client /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d/

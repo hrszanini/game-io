@@ -1,6 +1,5 @@
 
-serverUrl = `http://${window.location.hostname}:9001`;
-var socket = io(serverUrl);
+var socket = io.connect();
 
 const Channel = {
   CONNECTION: "connection",
